@@ -1,0 +1,84 @@
+---- PROJECTS Table ---- show projects of higher priority then show by completion percentage.
+id, Unique identifier
+name, Project title
+description, Project description
+category, This is for the website to automatically categorize content for individual pages on the footer
+status, Current status (e.g., planned, in progress, completed, on hold)
+start_date, When it started
+updated_at, When it was last updated
+priority, Prioritize what is seen on pages with this percentage
+tags, Keywords or tags for categorization in the repository lookup
+progress, Completion progress
+picture_count, Amount of pictures for the project view
+link, Github repository link
+
+
+---- JOBS TABLE ----
+id, Unique identifier
+title, Job title/position
+company, Name of the company/organization
+location, Location of the job
+start_date, (e.g. yyyy)
+end_date, (e.g. current or yyyy)
+description, Description of responsibilities/achievements
+
+---- CERTIFICATES TABLE ----
+id,
+name,
+issuer,
+issue_date,
+start_date,
+expiry_date,
+credential_link,
+credential_id,
+description,
+
+---- EDUCATION TABLE ----
+id,
+institution,
+degree,
+field_of_study,
+start_date,
+end_date,
+description,
+
+
+---- SKILLS TABLE ----
+id,
+name,
+category,
+proficiency, Level of proficiency (e.g., Beginner, Intermediate, Advanced, Expert)
+description,
+
+
+---- EVENTS TABLE ---- Blog / Charity highlights
+id,
+title,
+type, Charity or Blog
+description, Preview of the article
+article, Full article to be viewed
+date,
+location,
+image_count,
+company / charity,
+url,
+amount_raised,
+created_at,
+updated_at,
+is_published,
+publisher,
+
+
+---- SOCIALS TABLE ----
+id,
+platform,
+svg, (the HTML for the SVG logo)
+username,
+profile_url,
+description,
+created_at,
+is_active,
+
+
+
+WILL NEED TO READ DATABASE IN ALL LOWER CASE FOR DATA ENTRIES SUCH AS TYPES
