@@ -1,5 +1,5 @@
 # ----------------------------------------------------------
-# Importing all required libraries for this Flask Project.
+# Importing all required libraries for this Project.
 # ----------------------------------------------------------
 from flask import Flask, Blueprint, render_template, request, url_for, redirect, make_response, session, g
 import os
@@ -12,11 +12,82 @@ app = Flask(__name__)
 
 
 # ----------------------------------------------------------
-# Root initializations for the Flask Project.
+# Root initializations for the Project.
 # ----------------------------------------------------------
+# -- TEMPLATE PAGES --
 @app.route('/')
 def indexPage():
     return render_template('index.html')
+
+@app.route('/about')
+def aboutPage():
+    return render_template('about.html')
+
+@app.route('/projects')
+def projectsPage():
+    return render_template('projects.html')
+
+@app.route('/resume')
+def resumePage():
+    return render_template('resume.html')
+
+@app.route('/skills')
+def skillsPage():
+    return render_template('skills.html')
+
+@app.route('/timeline')
+def timelinePage():
+    return render_template('timeline.html')
+
+# -- OCCUPATION PAGES --
+@app.route('/occupation')
+def occupationPage():
+    return render_template('occupation/index.html')
+
+@app.route('/occupation/blog')
+def blogPage():
+    return render_template('occupation/blog.html')
+
+@app.route('/occupation/articles')
+def articlesPage():
+    return render_template('occupation/articles.html')
+
+@app.route('/occupation/certificates')
+def certificatesPage():
+    return render_template('occupation/certificates.html')
+
+@app.route('/occupation/charity')
+def charityPage():
+    return render_template('occupation/charity.html')
+
+@app.route('/occupation/socials')
+def socialsPage():
+    return render_template('occupation/socials.html')
+
+# -- PORTFOLIO PAGES --
+@app.route('/portfolio')
+def portfolioPage():
+    return render_template('portfolio/index.html')
+
+@app.route('/portfolio/desktop')
+def desktopPage():
+    return render_template('portfolio/desktop.html')
+
+@app.route('/portfolio/mobile')
+def mobilePage():
+    return render_template('portfolio/mobile.html')
+
+@app.route('/portfolio/open-source')
+def openSourcePage():
+    return render_template('portfolio/open-source.html')
+
+@app.route('/portfolio/personal')
+def personalPage():
+    return render_template('portfolio/personal.html')
+
+@app.route('/portfolio/web')
+def webPage():
+    return render_template('portfolio/web.html')
 
 
 # ----------------------------------------------------------
