@@ -1,23 +1,11 @@
 :root {
     --mft-brand-proper: #EB5B00;
     --mft-brand-off: #c84e02;
+    --mft-terminal-proper: #ffbf00;
     --mft-white-proper: #ffffff;
     --mft-white-off: #F1F1F1;
     --mft-black-proper: #030303;
     --mft-black-off: #1e1e1e;
-}
-
-html::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: screen;
-    background: 
-        linear-gradient(90deg, rgba(255,0,0,0.1) 0%, transparent 100%),
-        linear-gradient(270deg, rgba(0,255,255,0.1) 0%, transparent 100%);
-    filter: blur(4px);
 }
 
 html,
@@ -80,7 +68,7 @@ body {
 
         .mft-content-container {
             flex: 1 0 auto; /* This makes content grow and push footer down */
-            padding: 10px
+            padding: 10px;
         }
 
         .mft-footer-container {

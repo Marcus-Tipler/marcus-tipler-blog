@@ -1,0 +1,63 @@
+.mft-interactive {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      background: var(--mft-black-off);
+      color: var(--mft-terminal-proper);
+      overflow: hidden;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      isolation: isolate;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .mft-interactive .spinner {
+      position: absolute;
+      color: var(--mft-terminal-proper);;
+      font-size: 1.5rem;
+      pointer-events: none;
+      user-select: none;
+      opacity: 1;
+      transition: opacity 0.5s linear;
+      font-family: inherit;
+      will-change: opacity, transform;
+      z-index: 1;
+    }
+    /* Optional: subtle scanlines for CLI effect */
+    .mft-interactive::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,191,0,0.03) 0px,
+        rgba(255,191,0,0.03) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      z-index: 0;
+    }
+
+#mft-role-header,
+.mft-blinking-cursor {
+  display: inline;
+  vertical-align: baseline;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  color: var(--mft-terminal-proper);
+}
+
+.mft-blinking-cursor {
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.mft-title,
+.mft-role {
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
