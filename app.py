@@ -2,6 +2,9 @@
 # Importing all required libraries for this Project.
 # ----------------------------------------------------------
 from flask import Flask, Blueprint, render_template, request, url_for, redirect, make_response, session, g
+from flask_sqlalchemy import SQLAlchemy
+from dataclasses import dataclass
+from context.databaseHandler import db, Project, Job, Certificate, Education, Skill, Event, Social
 import os
 
 # ----------------------------------------------------------
@@ -9,6 +12,16 @@ import os
 # ----------------------------------------------------------
 dir_path = os.path.dirname(os.path.realpath(__file__))
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mft-db.sqlite3'
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
+
+@app.context_processor
+def inject_menu():
+    menu = Social.query.all()
+    return dict(menu=menu)
 
 
 # ----------------------------------------------------------
