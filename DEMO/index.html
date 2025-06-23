@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Command Line Background</title>
+  <style>
+    .mft-interactive {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: #1a1200;
+      overflow: hidden;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      isolation: isolate;
+    }
+    .mft-interactive .spinner {
+      position: absolute;
+      color: #ffbf00;
+      font-size: 1.5rem;
+      pointer-events: none;
+      user-select: none;
+      opacity: 1;
+      transition: opacity 0.5s linear;
+      font-family: inherit;
+      will-change: opacity, transform;
+      z-index: 1;
+    }
+    /* Optional: subtle scanlines for CLI effect */
+    .mft-interactive::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,191,0,0.03) 0px,
+        rgba(255,191,0,0.03) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="mft-interactive"></div>
+  <script>
+    const spinnerFrames = ['/', '|', '\\', '-'];
+    const trailDuration = 2000; // ms
+    const frameInterval = 80; // ms
+
+    const interactiveDiv = document.querySelector('.mft-interactive');
+
+    interactiveDiv.addEventListener('mousemove', (e) => {
+      // Get mouse position relative to the div
+      const rect = interactiveDiv.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      createSpinner(x, y);
+    });
+
+    function createSpinner(x, y) {
+      const spinner = document.createElement('span');
+      spinner.className = 'spinner';
+      spinner.style.left = (x - 8) + 'px';
+      spinner.style.top = (y - 12) + 'px';
+      spinner.textContent = spinnerFrames[0];
+      interactiveDiv.appendChild(spinner);
+
+      let frame = 0;
+      const spin = setInterval(() => {
+        frame = (frame + 1) % spinnerFrames.length;
+        spinner.textContent = spinnerFrames[frame];
+      }, frameInterval);
+
+      setTimeout(() => {
+        spinner.style.opacity = 0;
+        clearInterval(spin);
+        setTimeout(() => spinner.remove(), 500);
+      }, trailDuration);
+    }
+  </script>
+</body>
