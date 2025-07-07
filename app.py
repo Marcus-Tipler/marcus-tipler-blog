@@ -53,7 +53,8 @@ def skillsPage():
 
 @app.route('/timeline')
 def timelinePage():
-    return render_template('timeline.html')
+    jobs = Job.query.order_by(Job.start_date).all()  # Oldest to newest
+    return render_template('timeline.html', jobs=jobs)
 
 # -- OCCUPATION PAGES --
 @app.route('/occupation')
