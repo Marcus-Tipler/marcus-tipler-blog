@@ -108,3 +108,49 @@
 .mft-codersrank-about-item {
   padding: 10px
 }
+
+.mft-education-content {
+    align-self: center;
+}
+.mft-education-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+    justify-content: center; /* Center the grid items horizontally */
+}
+
+.mft-education-list > div {
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.mft-content-jobs {
+  padding: 20px 10px;
+  margin: 10px;
+  border-top: 1px solid var(--mft-black-off);
+}
+
+.mft-content-education {
+  padding: 20px 10px;
+  margin: 10px;
+  border-top: 1px solid var(--mft-black-off);
+}
+
+.mft-jobs-content {
+    align-self: center;
+}
+.mft-jobs-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+    justify-content: center; /* Center the grid items horizontally */
+}
+
+.mft-jobs-list > div {
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    overflow: hidden;
+}

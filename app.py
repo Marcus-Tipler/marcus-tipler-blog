@@ -35,8 +35,8 @@ def indexPage():
 
 @app.route('/about')
 def aboutPage():
-    jobs = Job.query.order_by(Job.id.desc()).all()
-    education = Education.query.order_by(Education.id.desc()).all()
+    jobs = Job.query.order_by(Job.id.desc()).limit(9).all()
+    education = Education.query.order_by(Education.id.desc()).limit(3).all()
     return render_template('about.html', jobs=jobs, education=education)
 
 @app.route('/projects')
