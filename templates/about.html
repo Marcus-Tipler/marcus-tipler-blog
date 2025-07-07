@@ -2,14 +2,97 @@
 
 
 {% block styles %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/about.css') }}">
 {% endblock %}
 
 
 {% block content %}
-    This is content
+    <!-- About section, with small description of who i am and a picture -->
+    <div class="mft-content">
+        <div class="mft-about">
+            <div class="mft-about-header">
+                <h2 class="mft-page-header-title">About me</h2><h2 class="mft-blinking-cursor">|</h2>
+            </div>
+            <div class="mft-about-content">
+                    <!-- TODO: THIS IMAGE NEEDS TO BE CHANGED FOR OPTIMIZED VERSION  -->
+                <div class="mft-about-text">
+                    <img src="{{ url_for('static', filename='images/unoptimised/mft-profile.png') }}" alt="Marcus-Francis-TIPLER.png">
+                    <p>Hello, i'm Marcus Francis TIPLER,</p>
+                    <p>an autistic human being who has been passionate about building computers since I was just 8 years old. Growing up in France as a British national, I've faced a fair few challenges, including being bullied throughout my entire life.</p>
+                    <p>However, I've always found solace in technology and coding. At the age of 14, I took it upon myself to hack into my school servers, deleting teacher files and getting caught... An experience that taught me valuable lessons about responsibility and consequences. Later on (in Lycée), when school servers shut down due to technical issues, I replaced them with my own and handled over 40 concurrent users daily from my own home for my final A Level exams (Baccalaureate).</p> 
+                    <p>Since then, I've volunteered with the International Trade Council since age 17 and became their senior web developer at just 18. Throughout my journey, I've also worked on websites for my parents' business, ensuring they could run their businesses successfully too.</p>
+                    <p>Today, I'm committed to helping bring your business ideas to life while pursuing a strong career in Computer Science with a PhD.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics section with data pulled from CodersRank -->
+    <div class="mft-content-codersrank">
+        <div class="mft-about-header">
+            <h2 class="mft-page-header-title">My statistics</h2><h2 class="mft-blinking-cursor">|</h2>
+        </div>
+        <div class="mft-codersrank-about">
+            <!-- Summary Widget -->
+            <codersrank-summary username="marcus-tipler" class="mft-codersrank-about-item"></codersrank-summary>
+            <!-- Activity Chart Widget -->
+            <codersrank-activity username="marcus-tipler" class="mft-codersrank-about-item"></codersrank-activity>
+        </div>
+    </div>
+
+    <!-- Jobs and Experience section that pulls from database -->
+    <div class="mft-content-jobs">
+        <div class="mft-about-header">
+            <h2 class="mft-page-header-title">Jobs and Experience</h2><h2 class="mft-blinking-cursor">|</h2>
+        </div>
+        <div class="mft-jobs-content">
+            {% if jobs %}
+                <ul class="mft-jobs-list">
+                    {% for job in jobs %}
+                        <li class="mft-job-item">
+                            <strong>{{ job.title }}</strong> at <em>{{ job.company }}</em>
+                            <br>
+                            <span>{{ job.location }}</span>
+                            <br>
+                            <span>{{ job.start_date }}{% if job.end_date %} – {{ job.end_date }}{% else %} – Present{% endif %}</span>
+                            <p>{{ job.description }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No jobs or experience found.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Education section that pulls from database -->
+    <div class="mft-content-education">
+        <div class="mft-about-header">
+            <h2 class="mft-page-header-title">Education</h2><h2 class="mft-blinking-cursor">|</h2>
+        </div>
+        <div class="mft-education-content">
+            {% if education %}
+                <ul class="mft-education-list">
+                    {% for edu in education %}
+                        <li class="mft-education-item">
+                            <strong>{{ edu.degree }}</strong> in <em>{{ edu.field_of_study }}</em>
+                            <br>
+                            <span>{{ edu.institution }}</span>
+                            <br>
+                            <span>{{ edu.start_date }}{% if edu.end_date %} – {{ edu.end_date }}{% else %} – Present{% endif %}</span>
+                            <p>{{ edu.description }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No education records found.</p>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
 
 
 {% block scripts %}
+    <script src="https://unpkg.com/@codersrank/activity@0.9.13/codersrank-activity.min.js"></script>
+    <script src="https://unpkg.com/@codersrank/summary@0.9.13/codersrank-summary.min.js"></script>
 {% endblock %}

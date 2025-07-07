@@ -1,0 +1,110 @@
+.mft-blinking-cursor {
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.mft-page-header-title,
+.mft-blinking-cursor {
+  display: inline;
+  vertical-align: baseline;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  color: var(--mft-black-proper);
+}
+
+.mft-about-header {
+  text-align: center;
+  padding: 10px;
+}
+
+.mft-content-codersrank {
+  border-top: 1px solid var(--mft-black-off);
+  padding: 20px 10px;
+  margin: 10px;
+}
+
+.mft-interactive::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,191,0,0.03) 0px,
+      rgba(255,191,0,0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    z-index: 0;
+}
+
+.mft-about-content {
+  display: flex;
+  padding: 10px;
+  contain: content;
+  overflow: hidden;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: var(--mft-white-proper);
+  border-radius: 10px;
+}
+@media (max-width: 1400px) {
+  .mft-about-content {
+    max-width: 1200px;
+  }
+}
+@media (max-width: 1200px) {
+  .mft-about-content {
+    max-width: 990px;
+  }
+}
+@media (max-width: 992px) {
+  .mft-about-content {
+    max-width: 760px;
+  }
+}
+@media (max-width: 768px) {
+  .mft-about-content {
+    max-width: 600px;
+  }
+}
+@media (max-width: 600px) {
+  .mft-about-content {
+    max-width: 470px;
+  }
+}
+@media (max-width: 480px) {
+  .mft-about-content {
+    max-width: 400px;
+  }
+}
+
+.mft-about-text img {
+  float: left;
+  width: 20%;
+  padding: 0px 20px 10px 0px;
+}
+
+@media (max-width: 600px) {
+  .mft-about-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mft-about-text img {
+    float: none;
+    width: 60%;
+    padding: 0 0 10px 0;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.mft-codersrank-about-item {
+  padding: 10px
+}
