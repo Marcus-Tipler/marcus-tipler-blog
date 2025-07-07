@@ -40,30 +40,6 @@
         </div>
     </div>
 
-    <!-- Jobs and Experience section that pulls from database -->
-    <div class="mft-content-jobs">
-        <div class="mft-about-header">
-            <h2 class="mft-page-header-title">Jobs and Experience</h2><h2 class="mft-blinking-cursor">|</h2>
-        </div>
-        <div class="mft-jobs-content">
-            {% if jobs %}
-                <ul class="mft-jobs-list">
-                    {% for job in jobs %}
-                        <li class="mft-job-item">
-                            <strong>{{ job.title }}</strong> at <em>{{ job.company }}</em>
-                            <br>
-                            <span>{{ job.location }}</span>
-                            <br>
-                            <span>{{ job.start_date }}{% if job.end_date %} – {{ job.end_date }}{% else %} – Present{% endif %}</span>
-                            <p>{{ job.description }}</p>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No jobs or experience found.</p>
-            {% endif %}
-        </div>
-    </div>
 
     <!-- Education section that pulls from database -->
     <div class="mft-content-education">
@@ -72,20 +48,45 @@
         </div>
         <div class="mft-education-content">
             {% if education %}
-                <ul class="mft-education-list">
+                <div class="mft-education-list">
                     {% for edu in education %}
-                        <li class="mft-education-item">
+                        <div class="mft-education-item">
                             <strong>{{ edu.degree }}</strong> in <em>{{ edu.field_of_study }}</em>
                             <br>
                             <span>{{ edu.institution }}</span>
                             <br>
                             <span>{{ edu.start_date }}{% if edu.end_date %} – {{ edu.end_date }}{% else %} – Present{% endif %}</span>
-                            <p>{{ edu.description }}</p>
-                        </li>
+                        </div>
                     {% endfor %}
-                </ul>
+                    </div>
             {% else %}
                 <p>No education records found.</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <!-- Jobs and Experience section that pulls from database -->
+    <div class="mft-content-jobs">
+        <div class="mft-about-header">
+            <h2 class="mft-page-header-title">Jobs and Experience</h2><h2 class="mft-blinking-cursor">|</h2>
+        </div>
+        <div class="mft-jobs-content">
+            {% if jobs %}
+                <div class="mft-jobs-list">
+                    {% for job in jobs %}
+                        <div class="mft-job-item">
+                            <strong>{{ job.title }}</strong> at <em>{{ job.company }}</em>
+                            <br>
+                            <span>{{ job.location }}</span>
+                            <br>
+                            <span>{{ job.start_date }}{% if job.end_date %} – {{ job.end_date }}{% else %} – Present{% endif %}</span>
+                            <p>{{ job.description }}</p>
+                        </div>
+                    {% endfor %}
+                    </div>
+            {% else %}
+                <p>No jobs or experience found.</p>
             {% endif %}
         </div>
     </div>
