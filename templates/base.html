@@ -14,10 +14,12 @@
         {% block header %}
             <div class="mft-header-contents">
                 <div class="mft-header-left">
-                    <img id="mft-logo" class="mft-logo" src="{{ url_for('static', filename='images/logo-inverted.png') }}" alt="MFT"/>
+                    <a href="{{ url_for('indexPage') }}">
+                        <img id="mft-logo" class="mft-logo" src="{{ url_for('static', filename='images/logo-inverted.png') }}" alt="MFT"/>
+                    </a>
                 </div>
                 <div class="mft-header-right">
-                    <a href="{{ url_for('indexPage') }}" class="mft-header-button">Home</a>
+                    <a href="{{ url_for('projectsPage') }}" class="mft-header-button">Projects</a>
                 </div>
             </div>
         {% endblock %}

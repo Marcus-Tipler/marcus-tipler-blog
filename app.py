@@ -14,6 +14,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mft-db.sqlite3'
 db.init_app(app)
+CODERSRANK_USERNAME = "marcus-tipler"
 
 with app.app_context():
     db.create_all()
@@ -34,7 +35,9 @@ def indexPage():
 
 @app.route('/about')
 def aboutPage():
-    return render_template('about.html')
+    jobs = Job.query.order_by(Job.id.desc()).all()
+    education = Education.query.order_by(Education.id.desc()).all()
+    return render_template('about.html', jobs=jobs, education=education)
 
 @app.route('/projects')
 def projectsPage():

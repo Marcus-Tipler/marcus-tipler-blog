@@ -4,9 +4,12 @@
 const roles = [
     "Web Developer ",
     "Software Engineer ",
+    "Ethical Hacker ",
+    "Cybersecurity Researcher ",
     "Open Source Contributor ",
     "Tech Enthusiast ",
-    "Autism Fighter "
+    "Fighting Autism ",
+    "Lifelong Learner "
 ];
 
 let roleIndex = 0;
@@ -85,7 +88,7 @@ const spinnerFrames = ['/', '|', '\\', '-'];
 
     document.addEventListener('DOMContentLoaded', () => {
     const interactive = document.querySelector('.mft-interactive');
-    const colors = ['#ffbf00', '#00ffd0', '#ff0080'];
+    const colors = ['#ffbf00', '#0000FF', '#00FF00', '#FFFFFF'];
     let colorIndex = 0;
 
     interactive.addEventListener('click', () => {
