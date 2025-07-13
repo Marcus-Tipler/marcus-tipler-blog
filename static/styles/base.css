@@ -238,3 +238,13 @@ body {
         justify-content: center;
     }
 }
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.mft-blinking-cursor {
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  animation: blink 1s steps(1) infinite;
+}

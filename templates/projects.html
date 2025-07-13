@@ -2,12 +2,75 @@
 
 
 {% block styles %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/projects.css') }}">
 {% endblock %}
 
 
 {% block content %}
-    This is content
+    <div class="mft-content">
+        <div class="mft-about">
+            <div class="mft-about-header">
+                <h2 class="mft-page-header-title">Project Directory</h2><h2 class="mft-blinking-cursor">|</h2>
+            </div>
+
+            <!-- Folder tree section, has a folder overview on the left pane and has contents in the right side with search box and current directory -->
+             <div class="mft-file-explorer">
+
+                <div class="mft-fe-left">
+                    <h3 class="mft-folder-type">Favorites</h3>
+                    <div class="mft-folder-container">
+                        <table class="mft-clickable-table">
+                            <tr class="mft-clickable-row" onclick="window.location.href='/projects'">
+                                <td class="mft-icon-cell"><img class="mft-folder-icon" src="{{ url_for('static', filename='vectors/home.svg')}}" alt="folderico icon" width="24" height="24"/></td>
+                                <td class="mft-title-cell">Home</td>
+                            </tr>
+                            {% for item in menu_item %}
+                                <tr class="mft-clickable-row" onclick="window.location.href='/projects/category/{{ item.id }}'">
+                                    <td class="mft-icon-cell"><img class="mft-folder-icon" src="{{ url_for('static', filename='vectors/folder.svg')}}" alt="folderico icon" width="24" height="24"/></td>
+                                    <td class="mft-title-cell">{{ item.name }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+
+                <div class="mft-fe-right">
+                    <div class="mft-fe-search">
+                        <form>
+                            <input class="mft-searchbox" type="text" value="🔎 Look up a specific project or folder..." onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Look up a specific project or folder...';}">
+                            <h4 class="mft-filepath">/home/user/projects/</h4>
+                        </form>
+                        
+                    </div>
+                    <div class="mft-fe-contents">
+
+                        <div class="mft-fe-item">
+                            <table class="mft-clickable-table">
+                                {% for category in categories %}
+                                    <tr class="mft-clickable-row" onclick="window.location.href='/projects/category/{{ category.id }}'">
+                                        <td class="mft-icon-cell"><img class="mft-folder-icon" src="{{ url_for('static', filename='vectors/folder.svg')}}" alt="folderico icon" width="24" height="24"/></td>
+                                        <td class="mft-title-cell">{{ category.name }}</td>
+                                    </tr>
+                                {% endfor %}
+                                {% for project in projects %}
+                                    <tr class="mft-clickable-row" onclick="window.location.href='{{ project.link }}'">
+                                        <td class="mft-icon-cell"><img class="mft-file-icon" src="{{ url_for('static', filename='vectors/shortcut.svg')}}" alt="file icon" width="24" height="24"/></td>
+                                        <td class="mft-title-cell">{{ project.name }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div class="mft-folder-overview">
+                        <p class="mft-amount">8 folders, 0 files </p>
+                    </div>
+                </div>
+
+             </div>
+        </div>
+    </div>
 {% endblock %}
 
 

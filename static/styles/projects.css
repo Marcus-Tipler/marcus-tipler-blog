@@ -1,0 +1,150 @@
+.mft-content {
+    padding: 10px;
+}
+
+    .mft-about {
+        
+    }
+
+        .mft-about-header {
+            padding-bottom: 10px;
+            text-align: center
+        }
+
+            .mft-page-header-title,
+            .mft-blinking-cursor {
+            display: inline;
+            vertical-align: baseline;
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            color: var(--mft-black-proper);
+            }
+
+
+        /* END OF MFT-ABOUT-HEADER */
+
+        .mft-file-explorer {
+            display: flex;
+            padding: 10px;
+            contain: content;
+            overflow: hidden;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            background-color: var(--mft-white-proper);
+            border: 1px solid var(--mft-black-off);
+        }
+
+            .mft-fe-left {
+                padding: 10px;
+                width: 250px;
+            }
+                
+                .mft-clickable-table {
+                    width: 100%;
+                    border-collapse: separate;
+                    border-spacing: 0 2px;
+                }
+                .mft-clickable-row td{
+                    cursor: pointer;
+                    border-top: 1px solid var(--mft-white-proper);
+                    border-bottom: 1px solid var(--mft-white-proper);
+                    color: var(--mft-black-off);
+                    background: var(--mft-white-full);
+                    transition: background 0.2s;
+                }
+                .mft-clickable-row td:last-child {
+                    border-right: 1px solid var(--mft-white-proper);
+                }
+                .mft-clickable-row td:first-child {
+                    border-left: 1px solid var(--mft-white-proper);
+                }
+                .mft-clickable-row:hover td{
+                    cursor: pointer;
+                    border-top: 1px solid var(--mft-black-off);
+                    border-bottom: 1px solid var(--mft-black-off);
+                    color: var(--mft-black-off);
+                    background: var(--mft-white-off);
+                    transition: background 0.2s;
+                }
+                .mft-clickable-row:hover td:last-child {
+                    border-right: 1px solid var(--mft-black-off);
+                }
+                .mft-clickable-row:hover td:first-child {
+                    border-left: 1px solid var(--mft-black-off);
+                }
+                .mft-icon-cell {
+                    width: 40px;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+                .mft-title-cell {
+                    vertical-align: middle;
+                    font-size: 1.1em;
+                    padding: 0px 5px;
+                }
+
+            /* END OF MFT-FE-LEFT */
+
+
+            .mft-fe-right {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 10px;
+                border-left: 1px solid var(--mft-black-off);
+                height: 100%;
+            }
+
+                .mft-fe-search {
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                    .mft-searchbox {
+                        display: block;
+                        width: 100%;
+                        box-sizing: border-box;
+                        padding: 8px;
+                        font-size: 1em;
+                        margin: 0;
+                    }
+
+                    .mft-filepath {
+
+                    }
+                
+                /* END OF MFT-FE-SEARCH */
+
+                .mft-fe-contents {
+
+                }
+
+                    .mft-fe-items {
+
+                    }
+
+                        .mft-folder-icon {
+
+                        }
+
+                        .mft-folder-name {
+                            
+                        }
+
+                    /* END OF MFT-FE-ITEMS */
+                
+                /* END OF MFT-FE-CONTENTS */
+
+                .mft-folder-overview {
+                    text-align: center;
+                }
+
+            /* END OF MFT-FE-RIGHT */
+
+        /* END OF MFT-FILE-EXPLORER */
+
+    /* END OF MFT-ABOUT */
+
+/* END OF MFT-CONTENT */

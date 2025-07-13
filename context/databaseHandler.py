@@ -9,7 +9,8 @@ class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text)
     description = db.Column(db.Text)
-    category = db.Column(db.Text)
+    category_id = db.Column(db.Integer, db.ForeignKey('project_categories.id'))
+    category = db.relationship('ProjectCategory', back_populates='projects')
     status = db.Column(db.Text)
     start_date = db.Column(db.Text)
     updated_at = db.Column(db.Text)
@@ -18,6 +19,7 @@ class Project(db.Model):
     progress = db.Column(db.Integer)
     picture_count = db.Column(db.Integer)
     link = db.Column(db.Text)
+    favorite = db.Column(db.Boolean, default=False)
 
 class Job(db.Model):
     __tablename__ = 'jobs'
@@ -87,3 +89,9 @@ class Social(db.Model):
     description = db.Column(db.Text)
     created_at = db.Column(db.Text)
     is_active = db.Column(db.Integer)
+
+class ProjectCategory(db.Model):
+    __tablename__ = 'project_categories'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text)
+    projects = db.relationship('Project', back_populates='category', lazy=True)
