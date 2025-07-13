@@ -4,7 +4,7 @@
 from flask import Flask, Blueprint, render_template, request, url_for, redirect, make_response, session, g
 from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
-from context.databaseHandler import db, Project, Job, Certificate, Education, Skill, Event, Social
+from context.databaseHandler import db, Project, Job, Certificate, Education, Skill, Event, Social, ProjectCategory
 import os
 
 # ----------------------------------------------------------
@@ -41,7 +41,22 @@ def aboutPage():
 
 @app.route('/projects')
 def projectsPage():
-    return render_template('projects.html')
+    projects = []
+    menu_item = ProjectCategory.query.all()
+    categories = ProjectCategory.query.all()
+    return render_template('projects.html', projects=projects, categories=categories, menu_item=menu_item)
+
+@app.route('/projects/category/<int:category_id>')
+def projectsByCategory(category_id):
+    categories = []
+    menu_item = ProjectCategory.query.all()
+    projects = Project.query.filter_by(category_id=category_id).all()
+    return render_template(
+        'projects.html',
+        projects=projects,
+        categories=categories, 
+        menu_item=menu_item
+    )
 
 @app.route('/resume')
 def resumePage():
@@ -53,7 +68,8 @@ def skillsPage():
 
 @app.route('/timeline')
 def timelinePage():
-    return render_template('timeline.html')
+    jobs = Job.query.order_by(Job.start_date).all()  # Oldest to newest
+    return render_template('timeline.html', jobs=jobs)
 
 # -- OCCUPATION PAGES --
 @app.route('/occupation')
