@@ -1,26 +1,23 @@
 {% extends "base.html" %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
-    <style>
-      .pdf-viewer {
-        width: 100%;
-        height: 80vh;
-        border: none;
-        margin: 0 auto;
-        display: block;
-        max-width: 900px;
-      }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/resume.css') }}">
 {% endblock %}
 
 {% block content %}
-    <h2>Resume</h2>
-    <embed src="{{ url_for('static', filename='docs/resume.pdf') }}" type="application/pdf" class="pdf-viewer">
+    <div class="mft-about-header">
+        <h2 class="mft-page-header-title">Project Directory</h2><h2 class="mft-blinking-cursor">|</h2>
+    </div>
+    
+    <div class="mft-background">
+        <div class="cli-rain-container"></div>
+        <embed src="{{ url_for('static', filename='docs/resume.pdf') }}" type="application/pdf" class="pdf-viewer">
+    </div>
     <!-- Alternatively, use iframe:
     <iframe src="{{ url_for('static', filename='docs/resume.pdf') }}" class="pdf-viewer"></iframe>
     -->
 {% endblock %}
 
 {% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/resume.js') }}"></script>
 {% endblock %}

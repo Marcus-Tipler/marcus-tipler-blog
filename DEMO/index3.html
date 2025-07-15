@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vintage Badge System</title>
+  <style>
+    body {
+      background: #181818;
+      color: #ffbf00;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .badge-area {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .badge {
+      position: absolute;
+      width: 100px;
+      height: 120px;
+      background: #222;
+      border: 2px solid #ffbf00;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #000a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      cursor: grab;
+      user-select: none;
+      transition: box-shadow 0.2s;
+      z-index: 2;
+    }
+    .badge:active {
+      box-shadow: 0 4px 24px #ffbf00;
+      cursor: grabbing;
+      z-index: 3;
+    }
+    .badge-icon {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      font-size: 2.2em;
+      text-shadow: 0 0 2px #ffbf00;
+    }
+    .badge-label {
+      color: #00ff00;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .badge-desc {
+      color: #ffbf00;
+      font-size: 0.9em;
+      text-align: center;
+      margin: 0 8px;
+      margin-bottom: 8px;
+    }
+    .retro-title {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #00ff00;
+      font-weight: bold;
+      font-size: 1.4em;
+      letter-spacing: 2px;
+      text-shadow: 0 0 2px #00ff00;
+      z-index: 10;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="badge-area" id="badgeArea">
+    <div class="retro-title">[ RETRO SKILL BADGES ]</div>
+    <!-- Badges will be injected by JS -->
+  </div>
+  <script>
+    // Badge data
+    const badges = [
+      {
+        label: "SQL",
+        icon: "🗄️",
+        desc: "Database Wizard"
+      },
+      {
+        label: "CSS",
+        icon: "🎨",
+        desc: "Style Guru"
+      },
+      {
+        label: "JavaScript",
+        icon: "📟",
+        desc: "Code Sorcerer"
+      },
+      {
+        label: "Python",
+        icon: "🐍",
+        desc: "Script Master"
+      },
+      {
+        label: "HTML",
+        icon: "📄",
+        desc: "Markup Pro"
+      }
+    ];
+
+    // Create badges
+    const area = document.getElementById('badgeArea');
+    badges.forEach((badge, i) => {
+      const el = document.createElement('div');
+      el.className = 'badge';
+      el.innerHTML = `
+        <div class="badge-icon">${badge.icon}</div>
+        <div class="badge-label">${badge.label}</div>
+        <div class="badge-desc">${badge.desc}</div>
+      `;
+      // Random initial position
+      el.style.left = (60 + i * 120) + 'px';
+      el.style.top = (80 + Math.random() * 120) + 'px';
+      area.appendChild(el);
+      makeDraggableWithGravity(el);
+    });
+
+    // Drag and gravity logic
+    function makeDraggableWithGravity(el) {
+      let isDragging = false, offsetX = 0, offsetY = 0, startX = 0, startY = 0, vx = 0, vy = 0, gravity = 0.7, friction = 0.98, animationFrame;
+
+      el.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        vx = vy = 0;
+        startX = e.clientX;
+        startY = e.clientY;
+        const rect = el.getBoundingClientRect();
+        offsetX = startX - rect.left;
+        offsetY = startY - rect.top;
+        el.style.zIndex = 10;
+        cancelAnimationFrame(animationFrame);
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        let x = e.clientX - offsetX;
+        let y = e.clientY - offsetY;
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+        vx = e.movementX;
+        vy = e.movementY;
+      });
+
+      document.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        el.style.zIndex = 2;
+        animateDrop();
+      });
+
+      function animateDrop() {
+        let rect = el.getBoundingClientRect();
+        let areaRect = area.getBoundingClientRect();
+        function step() {
+          if (isDragging) return;
+          vy += gravity;
+          vx *= friction;
+          vy *= friction;
+          let x = rect.left - areaRect.left + vx;
+          let y = rect.top - areaRect.top + vy;
+          // Bounce off edges
+          if (x < 0) { x = 0; vx = -vx * 0.7; }
+          if (x > areaRect.width - rect.width) { x = areaRect.width - rect.width; vx = -vx * 0.7; }
+          if (y > areaRect.height - rect.height) { y = areaRect.height - rect.height; vy = -vy * 0.7; }
+          if (y < 0) { y = 0; vy = -vy * 0.7; }
+          el.style.left = x + 'px';
+          el.style.top = y + 'px';
+          rect = el.getBoundingClientRect();
+          if (Math.abs(vx) > 0.5 || Math.abs(vy) > 0.5 || y < areaRect.height - rect.height) {
+            animationFrame = requestAnimationFrame(step);
+          }
+        }
+        animationFrame = requestAnimationFrame(step);
+      }
+    }
+  </script>
+</body>
+</html>

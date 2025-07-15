@@ -44,18 +44,57 @@ def projectsPage():
     projects = []
     menu_item = ProjectCategory.query.all()
     categories = ProjectCategory.query.all()
-    return render_template('projects.html', projects=projects, categories=categories, menu_item=menu_item)
+    selected_category = None
+    projects_count = len(projects)
+    categories_count = len(categories)
+    return render_template(
+        'projects.html',
+        projects=projects,
+        categories=categories,
+        menu_item=menu_item,
+        projects_count=projects_count,
+        categories_count=categories_count,
+        selected_category=selected_category
+    )
 
 @app.route('/projects/category/<int:category_id>')
 def projectsByCategory(category_id):
     categories = []
     menu_item = ProjectCategory.query.all()
     projects = Project.query.filter_by(category_id=category_id).all()
+    selected_category = ProjectCategory.query.get_or_404(category_id)
+    projects_count = len(projects)
+    categories_count = len(categories)
     return render_template(
         'projects.html',
         projects=projects,
-        categories=categories, 
-        menu_item=menu_item
+        categories=categories,
+        menu_item=menu_item,
+        projects_count=projects_count,
+        categories_count=categories_count,
+        selected_category=selected_category
+    )
+
+@app.route('/projects/search')
+def projectsSearch():
+    query = request.args.get('q', '').strip()
+    menu_item = ProjectCategory.query.all()
+    categories = []
+    selected_category = None
+    if query:
+        projects = Project.query.filter(Project.name.ilike(f'%{query}%')).all()
+    else:
+        projects = []
+    projects_count = len(projects)
+    categories_count = len(categories)
+    return render_template(
+        'projects.html',
+        projects=projects,
+        categories=categories,
+        menu_item=menu_item,
+        projects_count=projects_count,
+        categories_count=categories_count,
+        selected_category=selected_category
     )
 
 @app.route('/resume')
