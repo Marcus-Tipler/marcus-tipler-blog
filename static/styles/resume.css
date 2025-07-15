@@ -1,0 +1,64 @@
+.mft-background {
+    position: relative;
+    width: 100%;
+    height: 120vh;
+    margin: 10px auto;
+    background: var(--mft-white-proper);
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    background-image: radial-gradient(black 1px, transparent 1px);
+    background-size: 24px 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.cli-rain-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cli-rain-symbol {
+    position: absolute;
+    color: var(--mft-brand-proper);
+    font-size: 1rem;
+    opacity: 0.85;
+    pointer-events: none;
+    user-select: none;
+    font-family: inherit;
+    animation: fall 2.5s linear forwards;
+    /* Use the dynamic fall distance */
+    --fall-distance: 100%;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0); opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(var(--fall-distance)); opacity: 0; }
+}
+
+.pdf-viewer {
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    height: calc(100% - 40px);
+    display: block;
+    overflow: auto;
+}
+
+.mft-page-header-title,
+.mft-blinking-cursor {
+    display: inline;
+    vertical-align: baseline;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    color: var(--mft-black-proper);
+}
+
+.mft-about-header {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}

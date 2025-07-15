@@ -36,9 +36,14 @@
 
                 <div class="mft-fe-right">
                     <div class="mft-fe-search">
-                        <form>
-                            <input class="mft-searchbox" type="text" value="🔎 Look up a specific project or folder..." onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Look up a specific project or folder...';}">
-                            <h4 class="mft-filepath">/home/user/projects/</h4>
+                        <form method="get" action="{{ url_for('projectsSearch') }}">
+                            <input class="mft-searchbox" type="text" name="q" placeholder="🔎 Look up a specific project or folder..." value="{{ request.args.get('q', '') }}">
+                            <h4 class="mft-filepath">
+                                <a href="{{ url_for('projectsPage') }}">/home/user/projects/</a>
+                                {% if selected_category %}
+                                    <a href="{{ url_for('projectsByCategory', category_id=selected_category.id) }}">{{ selected_category.name }}/</a>
+                                {% endif %}
+                            </h4>
                         </form>
                         
                     </div>
@@ -55,7 +60,7 @@
                                 {% for project in projects %}
                                     <tr class="mft-clickable-row" onclick="window.location.href='{{ project.link }}'">
                                         <td class="mft-icon-cell"><img class="mft-file-icon" src="{{ url_for('static', filename='vectors/shortcut.svg')}}" alt="file icon" width="24" height="24"/></td>
-                                        <td class="mft-title-cell">{{ project.name }}</td>
+                                        <td class="mft-title-cell">{{ project.name }}.git</td>
                                     </tr>
                                 {% endfor %}
                             </table>
@@ -64,11 +69,42 @@
                     </div>
 
                     <div class="mft-folder-overview">
-                        <p class="mft-amount">8 folders, 0 files </p>
+                        <p class="mft-amount">
+                            {{ categories_count }} {{ 'folder' if categories_count == 1 else 'folders' }},
+                            {{ projects_count }} {{ 'file' if projects_count == 1 else 'files' }}
+                        </p>
                     </div>
                 </div>
 
-             </div>
+            </div>
+
+            <div class="mft-trustedby-container">
+                <div class="mft-about-header">
+                    <h2 class="mft-page-header-title">Trusted by</h2><h2 class="mft-blinking-cursor">:</h2>
+                </div>
+                
+                <div class="mft-trustedby-companies">
+                    <table class="mft-trustedby-item">
+                        <tr>
+                            <td><img src="{{ url_for('static', filename='images/businesses/GOV.png') }}" alt="Company 1" class="mft-trustedby-logo" width="100" height="100"/></td>
+                            <td><h2 class="mft-trustedby-name">GOV UK</h2></td>
+                        </tr>
+                    </table>
+                    <table class="mft-trustedby-item">
+                        <tr>
+                            <td><img src="{{ url_for('static', filename='images/businesses/NHS.png') }}" alt="Company 1" class="mft-trustedby-logo" width="100" height="100"/></td>
+                            <td><h2 class="mft-trustedby-name">NHS UK</h2></td>
+                        </tr>
+                    </table>
+                    <table class="mft-trustedby-item">
+                        <tr>
+                            <td><img src="{{ url_for('static', filename='images/businesses/POLICE.png') }}" alt="Company 1" class="mft-trustedby-logo" width="100" height="125"/>
+                            <td><h2 class="mft-trustedby-name">POLICE WALES</h2>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 {% endblock %}

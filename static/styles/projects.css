@@ -1,5 +1,5 @@
 .mft-content {
-    padding: 10px;
+    
 }
 
     .mft-about {
@@ -7,8 +7,9 @@
     }
 
         .mft-about-header {
-            padding-bottom: 10px;
-            text-align: center
+            text-align: center;
+            padding: 20px;
+            padding-top: 30px; 
         }
 
             .mft-page-header-title,
@@ -94,6 +95,7 @@
                 padding: 10px;
                 border-left: 1px solid var(--mft-black-off);
                 height: 100%;
+                min-height: 400px;
             }
 
                 .mft-fe-search {
@@ -118,7 +120,8 @@
                 /* END OF MFT-FE-SEARCH */
 
                 .mft-fe-contents {
-
+                    flex: 1 0 auto;
+                    padding: 10px;
                 }
 
                     .mft-fe-items {
@@ -139,12 +142,57 @@
 
                 .mft-folder-overview {
                     text-align: center;
+                    flex-shrink: 0;
+                    padding: 10px;
                 }
 
             /* END OF MFT-FE-RIGHT */
 
         /* END OF MFT-FILE-EXPLORER */
 
+        .mft-trustedby-container {
+            padding: 10px;
+            padding-top: 30px;
+        }
+
+            .mft-trustedby-companies {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+                .mft-trustedby-item {
+                    padding: 10px 50px;
+                    background: var(--mft-white-proper);
+                    border: 1px solid var(--mft-black-proper);
+                    border-radius: 10px;
+                    margin: 10px;
+                    width: 30%;
+                }
+
+                    .mft-trustedby-logo {
+
+                    }
+
+                    .mft-trustedby-name {
+                        
+                    }
+
+                /* END OF MFT-TRUSTEDBY-ITEM */
+
+            /* END OF MFT-TRUSTEDBY-COMPANIES */
+
+        /* END OF MFT-TRUSTEDBY-CONTAINER */
+
     /* END OF MFT-ABOUT */
 
 /* END OF MFT-CONTENT */
+
+
+@media (max-width: 992px) {
+  .mft-trustedby-companies {
+      display: flex;
+      flex-direction: column;
+      align-items: center
+  }
+}

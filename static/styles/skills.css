@@ -1,0 +1,62 @@
+.badge-area {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.badge {
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    background: #222;
+    border: 2px solid #ffbf00;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #000a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: grab;
+    user-select: none;
+    transition: box-shadow 0.2s;
+    z-index: 2;
+}
+.badge:active {
+    box-shadow: 0 4px 24px #ffbf00;
+    cursor: grabbing;
+    z-index: 3;
+}
+.badge-icon {
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-size: 2.2em;
+    text-shadow: 0 0 2px #ffbf00;
+}
+.badge-label {
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.badge-desc {
+    color: #ffbf00;
+    font-size: 0.9em;
+    text-align: center;
+    margin: 0 8px;
+    margin-bottom: 8px;
+}
+.retro-title {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 1.4em;
+    letter-spacing: 2px;
+    text-shadow: 0 0 2px #00ff00;
+    z-index: 10;
+    pointer-events: none;
+}
