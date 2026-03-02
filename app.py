@@ -103,7 +103,20 @@ def resumePage():
 
 @app.route('/skills')
 def skillsPage():
-    return render_template('skills.html')
+    skills = Skill.query.all()
+    # Convert each Skill object to a dict
+    skills_dict = [
+        {
+            "id": skill.id,
+            "name": skill.name,
+            "category": skill.category,
+            "proficiency": skill.proficiency,
+            "description": skill.description,
+            "icon": skill.icon
+        }
+        for skill in skills
+    ]
+    return render_template('skills.html', skills=skills_dict)
 
 @app.route('/timeline')
 def timelinePage():

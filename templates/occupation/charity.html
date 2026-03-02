@@ -2,12 +2,140 @@
 
 
 {% block styles %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/occupation/charity.css') }}">
 {% endblock %}
 
 
+{% block when_delivered %}
+    <div class="mft-charity-content">
+        <div class="mft-charity-container">
+            <div class="mft-charity-left">
+                <div class="mft-charity-static">
+                    <div class="mft-charity-poster">
+                        <img src="{{ url_for('static', filename='images/occupation/charity/charity-poster.png') }}" alt="Charity Poster" class="mft-charity-poster-image" width="400px" height="400px">
+                    </div>
+                    <div class="mft-charity-text">
+                        <h3 class="mft-charity-title">Cardiff University Cancer Research</h3>
+                        <p class="mft-charity-description">I've decided to support Cardiff University (in collaboration with UCL Cancer Research) because of their visible impact and commitment to the cause. As someone who's close family has been affected by Cancer, it means a lot to have them around and i fully support their work.</p>
+                    </div>
+                </div>
+
+                <div class="mft-charity-dynamic">
+                    <div class="mft-charity-projects">
+                        
+                        <div class="mft-charity-project-container">
+                            <div class="mft-charity-project-image">
+                                <img src="{{ url_for('static', filename='images/demo/demo1080.png') }}" alt="Project 1" class="mft-charity-project-img">
+                            </div>
+                            <div class="mft-charity-project-info">
+                                <h4 class="mft-charity-project-title">Clean Water Initiative</h4>
+                                <p class="mft-charity-project-description">Providing clean drinking water to rural communities through sustainable well-building projects.</p>
+                            </div>
+                            <div class="mft-charity-project-publisher">
+                                <table class="mft-charity-publisher-table">
+                                    <tr>
+                                        <td><img src="{{ url_for('static', filename='images/demo/demoprofile.png') }}" alt="Publisher 1" class="mft-charity-project-publisher-img"></td>
+                                        <td><p class="mft-charity-project-publisher-name">Published by: MarcuMan</p></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mft-charity-project-container">
+                            <div class="mft-charity-project-image">
+                                <img src="{{ url_for('static', filename='images/demo/demo1080.png') }}" alt="Project 2" class="mft-charity-project-img">
+                            </div>
+                            <div class="mft-charity-project-info">
+                                <h4 class="mft-charity-project-title">Education for All</h4>
+                                <p class="mft-charity-project-description">Building schools and providing educational resources to underserved communities worldwide.</p>
+                            </div>
+                            <div class="mft-charity-project-publisher">
+                                <table class="mft-charity-publisher-table">
+                                    <tr>
+                                        <td><img src="{{ url_for('static', filename='images/demo/demoprofile.png') }}" alt="Publisher 2" class="mft-charity-project-publisher-img"></td>
+                                        <td><p class="mft-charity-project-publisher-name">Published by: Sarah K.</p></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mft-charity-project-container">
+                            <div class="mft-charity-project-image">
+                                <img src="{{ url_for('static', filename='images/demo/demo1080.png') }}" alt="Project 3" class="mft-charity-project-img">
+                            </div>
+                            <div class="mft-charity-project-info">
+                                <h4 class="mft-charity-project-title">Food Security Program</h4>
+                                <p class="mft-charity-project-description">Addressing hunger through sustainable farming and food distribution programs.</p>
+                            </div>
+                            <div class="mft-charity-project-publisher">
+                                <table class="mft-charity-publisher-table">
+                                    <tr>
+                                        <td><img src="{{ url_for('static', filename='images/demo/demoprofile.png') }}" alt="Publisher 3" class="mft-charity-project-publisher-img"></td>
+                                        <td><p class="mft-charity-project-publisher-name">Published by: Alex Chen</p></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mft-charity-project-container">
+                            <div class="mft-charity-project-image">
+                                <img src="{{ url_for('static', filename='images/demo/demo1080.png') }}" alt="Project 4" class="mft-charity-project-img">
+                            </div>
+                            <div class="mft-charity-project-info">
+                                <h4 class="mft-charity-project-title">Healthcare Access</h4>
+                                <p class="mft-charity-project-description">Bringing medical care to remote areas through mobile clinics and telemedicine.</p>
+                            </div>
+                            <div class="mft-charity-project-publisher">
+                                <table class="mft-charity-publisher-table">
+                                    <tr>
+                                        <td><img src="{{ url_for('static', filename='images/demo/demoprofile.png') }}" alt="Publisher 4" class="mft-charity-project-publisher-img"></td>
+                                        <td><p class="mft-charity-project-publisher-name">Published by: Dr. Maria</p></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mft-charity-right">
+                <div class="mft-charity-recents">
+                    <h3 class="mft-charity-recent-title">Recent Donors</h3>
+                    <div class="mft-charity-recent-list">
+                        <div class="mft-charity-recent-item">
+                            <img src="{{ url_for('static', filename='images/demo/demoprofile.png') }}" alt="Donor 1" class="mft-charity-project-publisher-img">
+                            <p class="mft-charity-project-publisher-name">John Smith</p>
+                        </div>
+                        <div class="mft-charity-recent-item">
+                            <img src="{{ url_for('static', filename='images/demo/demoprofile.png') }}" alt="Donor 2" class="mft-charity-project-publisher-img">
+                            <p class="mft-charity-project-publisher-name">Sarah Johnson</p>
+                        </div>
+                        <div class="mft-charity-recent-item">
+                            <img src="{{ url_for('static', filename='images/demo/demoprofile.png') }}" alt="Donor 3" class="mft-charity-project-publisher-img">
+                            <p class="mft-charity-project-publisher-name">Mike Wilson</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mft-charity-raised">
+                    <h3 class="mft-charity-raised-title">Funds Raised</h3>
+                    <p class="mft-charity-raised-amount">$10,000</p>
+                    <p class="mft-charity-raised-goal">Goal: $50,000</p>
+                    <div class="mft-charity-progress">
+                        <div class="mft-charity-progress-fill" style="width: 20%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}
+
 {% block content %}
-    This is content
+    <div class="mft-warning">
+        <p class="mft-warning-text">Cancer Research Cardiff and I are currently talking about this very web-page and what is to come. Please be patient and we will have everything up as soon as possible.</p>
+    </div>
 {% endblock %}
 
 

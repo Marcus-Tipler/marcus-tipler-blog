@@ -8,11 +8,20 @@
 
 {% block content %}
     <div class="badge-area" id="badgeArea">
-    <div class="retro-title">[ RETRO SKILL BADGES ]</div>
+        <div class="mft-about-header">
+            <h2 class="mft-page-header-title">Project Directory</h2><h2 class="mft-blinking-cursor">|</h2>
+        </div>
+        <div id="badgeModal" class="badge-modal" style="display:none;">
+        <div class="badge-modal-content" id="badgeModalContent"></div>
+        </div>
     </div>
 {% endblock %}
 
 
 {% block scripts %}
+    <script>
+    // Pass skills from Flask to JS
+    const skills = {{ skills | tojson }};
+    </script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/skills.js') }}"></script>
 {% endblock %}
