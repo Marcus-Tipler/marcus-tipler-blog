@@ -60,6 +60,7 @@ class Skill(db.Model):
     category = db.Column(db.Text)
     proficiency = db.Column(db.Text)
     description = db.Column(db.Text)
+    icon = db.Column(db.Text)
 
 class Event(db.Model):
     __tablename__ = 'events'

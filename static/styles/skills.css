@@ -3,6 +3,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    padding: 5px;
 }
 .badge {
     position: absolute;
@@ -33,30 +34,72 @@
     text-shadow: 0 0 2px #ffbf00;
 }
 .badge-label {
-    color: #00ff00;
+    color: var(--mft-brand-proper);
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1em;
     margin-bottom: 4px;
     letter-spacing: 1px;
     text-align: center;
 }
 .badge-desc {
-    color: #ffbf00;
+    color: var(--mft-white-off);
     font-size: 0.9em;
     text-align: center;
     margin: 0 8px;
     margin-bottom: 8px;
 }
-.retro-title {
-    position: absolute;
-    top: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #00ff00;
-    font-weight: bold;
-    font-size: 1.4em;
-    letter-spacing: 2px;
-    text-shadow: 0 0 2px #00ff00;
-    z-index: 10;
-    pointer-events: none;
+
+.mft-page-header-title,
+.mft-blinking-cursor {
+  display: inline;
+  vertical-align: baseline;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  color: var(--mft-black-proper);
+}
+
+.mft-about-header {
+    text-align: center;
+}
+
+.badge-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(24,24,24,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.badge-modal-content {
+  background: #222;
+  border: 2px solid #ffbf00;
+  border-radius: 12px;
+  color: #ffbf00;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  padding: 32px 24px;
+  min-width: 280px;
+  max-width: 90vw;
+  box-shadow: 0 2px 16px #000a;
+  position: relative;
+}
+.badge-modal-close {
+  position: absolute;
+  top: 8px; right: 16px;
+  color: #00ff00;
+  font-size: 1.2em;
+  cursor: pointer;
+  font-weight: bold;
+}
+.badge-modal-content h3 {
+  color: #00ff00;
+  margin-top: 0;
+}
+.badge-modal-content .modal-label {
+  color: #ffbf00;
+  font-weight: bold;
+}
+.badge-modal-content .modal-value {
+  color: #fff;
+  margin-bottom: 8px;
+  display: block;
 }

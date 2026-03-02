@@ -27,7 +27,7 @@ function createRainSymbol() {
     });
 }
 
-setInterval(createRainSymbol, 2000);
+setInterval(createRainSymbol, 1000);
 
 window.addEventListener('resize', () => {
     rainContainer.style.width = mathContainer.offsetWidth + 'px';
